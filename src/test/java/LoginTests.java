@@ -16,6 +16,15 @@ public class LoginTests {
     }
 
     @Test
+    void successfulAutorizationByEnterTest() {
+        open("https://qa-guru.github.io/one-page-form/login.html");
+        $("#login-input").val("user1");
+        $("#password-input").val("password1").pressEnter();
+        $("#welcome-message").shouldHave(text("Welcome, user1!"));
+        $("#logout-button").click();
+    }
+
+    @Test
     void wrongPasswordAutorizationTest() {
         open("https://qa-guru.github.io/one-page-form/login.html");
         $("#login-input").val("user1");
